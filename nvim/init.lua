@@ -9,5 +9,5 @@ set.shiftwidth = 2
 set.expandtab = true
 
 set.cursorline = true
-set.scrolloff = 8 
+set.scrolloff = 5
 set.showcmd = true
