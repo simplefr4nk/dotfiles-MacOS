@@ -12,46 +12,72 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+  use { -- Packer nvim packet manager
+    'wbthomason/packer.nvim'
+  }
   -- My plugins here
-  use 'navarasu/onedark.nvim'
-  use 'nvim-tree/nvim-tree.lua'
-  use 'nvim-tree/nvim-web-devicons'
-  use 'nvim-lualine/lualine.nvim'
-  use 'nvim-treesitter/nvim-treesitter'
-  use {
+  use { -- theme
+    'navarasu/onedark.nvim'
+  }
+  use { -- file explorer
+    'nvim-tree/nvim-tree.lua'
+  }
+  use { -- icons for the names
+    'nvim-tree/nvim-web-devicons'
+  }
+  use { -- bar at the bottom of thr screen
+    'nvim-lualine/lualine.nvim'
+  }
+  use { -- syntax higlightinh
+    'nvim-treesitter/nvim-treesitter'
+  }
+  use { -- fzf search 
     'nvim-telescope/telescope.nvim',
     tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use {
+  use { -- LSP configuration
+    'neovim/nvim-lspconfig', 
+    -- tool to install LSP 
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-    'neovim/nvim-lspconfig',
+    -- LSP tool
+    'j-hui/fidget.nvim',
+    -- Additional lua configuration
+    'folke/neodev.nvim',
   }
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
-  use 'rafamadriz/friendly-snippets'
-  use {
+  use { -- Autocompletion
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-nvim-lsp', 
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+  }
+  use { -- snippets to save time while coding
+    'rafamadriz/friendly-snippets'
+  }
+  use { -- automatic close parenthesis
 	  'windwp/nvim-autopairs',
     config = function() require('nvim-autopairs').setup {} end
   }
-  use 'norcalli/nvim-colorizer.lua'
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  })
   use {
+    'norcalli/nvim-colorizer.lua'
+  }
+  use { -- markdown previewer in browser
+    "iamcco/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  }
+  use { -- fancy tabs on the top
     'akinsho/bufferline.nvim',
     tag = "v3.*",
     requires = 'nvim-tree/nvim-web-devicons'
   }
-  use {
-    "akinsho/toggleterm.nvim", tag = '*', config = function()
-      require("toggleterm").setup()
-    end
+  use { -- toggle a customizable Terminal 
+    "akinsho/toggleterm.nvim", tag = '*'
+  }
+  use { -- add indent blankline
+    'lukas-reineke/indent-blankline.nvim'
   }
   -- use {
   --   'goolord/alpha-nvim',
