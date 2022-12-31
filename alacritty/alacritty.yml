@@ -1,0 +1,64 @@
+live_config_reload: true
+
+window:
+  opacity: 0.95
+  decorations: buttonless
+
+  padding:
+    x: 15
+    y: 15
+
+cursor:
+  style: Block 
+
+font:
+  normal:
+    family: FiraMono Nerd Font Mono
+    style: Regular
+  
+  bold:
+    family: FiraMono Nerd Font Mono
+    style: Bold
+  
+  italic:
+    family: FiraMono Nerd Font Mono
+    style: Italic
+  
+  size: 18
+  
+  AppleFontSmoothing: false
+
+draw_bold_text_with_bright_colors: false
+
+custom_cursor_colors: true
+
+# Colors
+colors:
+
+  # Default colors
+  primary:
+    background: '0x1E1E1E'
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0xFFFFFA'
+    cursor: '0xEDCF4F'
+  # Normal colors
+  normal:
+    black:   '0x343935'
+    red:     '0xCF3F61'
+    green:   '0x7BB75B'
+    yellow:  '0xE9B32A'
+    blue:    '0x4C9AD4'
+    magenta: '0xA57FC4'
+    cyan:    '0x389AAD'
+    white:   '0xFFFFFA'
+  # Bright colors
+  bright:
+    black:   '0x595B59'
+    red:     '0xD18FA6'
+    green:   '0x34A853'
+    yellow:  '0x78592F'
+    blue:    '0x135979'
+    magenta: '0x604291'
+    cyan:    '0x76BBCA'
+    white:   '0xB2B5AE'
