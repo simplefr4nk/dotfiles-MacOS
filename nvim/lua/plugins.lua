@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use { -- LSP configuration
-    'neovim/nvim-lspconfig', 
+    'neovim/nvim-lspconfig',
     -- tool to install LSP 
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
@@ -48,7 +48,7 @@ return require('packer').startup(function(use)
   }
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-nvim-lsp', 
+    'hrsh7th/cmp-nvim-lsp',
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
   }
@@ -79,12 +79,12 @@ return require('packer').startup(function(use)
   use { -- add indent blankline
     'lukas-reineke/indent-blankline.nvim'
   }
-  -- use {
-  --   'goolord/alpha-nvim',
-  --   config = function ()
-  --     require'alpha'.setup(require'alpha.themes.dashboard'.config)
-  --   end
-  -- }
+  use { -- simple greeter as startup
+    'goolord/alpha-nvim',
+    config = function ()
+      require'alpha'.setup(require'alpha.themes.dashboard'.config)
+    end
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
