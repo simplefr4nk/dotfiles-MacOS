@@ -44,13 +44,13 @@ function brew() {
 # command to copy all dotfiles in the local repo
 function copy-dotfiles(){
 
-  cp ~/.zshrc ~/github/dotfiles-MacOS/
-  cp -r ~/.config/alacritty  ~/github/dotfiles-MacOS/
-  cp -r ~/.config/fastfetch ~/github/dotfiles-MacOS/
-  cp -r ~/.config/kitty  ~/github/dotfiles-MacOS/
-  cp -r ~/.config/neofetch  ~/github/dotfiles-MacOS/
-  cp -r ~/.config/ranger  ~/github/dotfiles-MacOS/
-  cp -r ~/.config/starship.toml  ~/github/dotfiles-MacOS/
-  cp -r ~/.config/nvim ~/github/dotfiles-MacOS/
+  cp ~/.zshrc ~/myrepo/dotfiles-MacOS/
+  cp -r ~/.config/alacritty  ~/myrepo/dotfiles-MacOS/
+  cp -r ~/.config/fastfetch ~/myrepo/dotfiles-MacOS/
+  cp -r ~/.config/kitty  ~/myrepo/dotfiles-MacOS/
+  cp -r ~/.config/neofetch  ~/myrepo/dotfiles-MacOS/
+  cp -r ~/.config/ranger  ~/myrepo/dotfiles-MacOS/
+  cp -r ~/.config/starship.toml  ~/myrepo/dotfiles-MacOS/
+  cp -r ~/.config/nvim ~/myrepo/dotfiles-MacOS/
   
 }
