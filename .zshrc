@@ -3,8 +3,19 @@
 # open the Starship Prompt
 eval "$(starship init zsh)"
 
-# add the autosuggestion
+# add the autosuggestion, syntax highlighting and completions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
+
+# let me sign using GPG keys
+export GPG_TTY=$(tty)
+
+# let me mosh in other machines
+export LANG=it_IT.UTF-8
+
+# to use brew simpler without auto update
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # do pfetch everytime a terminal windows is opened
 #pfetch
@@ -21,16 +32,18 @@ else
   krabby random # do krabby random only if the terminal is alacritty
 fi
 
-# add syntax highlighting
-source /Users/enricofranco/Scripts/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 #alias
-alias ls="exa"
-alias ll="exa -lh"
+alias ls="exa -1 --icons"
+alias ll="exa -lh --icons"
+alias lt="exa --tree --level=2 --icons"
 alias move-rename="/Users/enricofranco/Scripts/move_and_rename"
+alias reddit-scrape="/Users/enricofranco/Scripts/reddit-scrape"
 
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias rng='ranger'
+
+# alias git
+alias lg='lazygit'
 
 # to update packages of sketchybar with brew()
 function brew() {
@@ -54,3 +67,4 @@ function copy-dotfiles(){
   cp -r ~/.config/nvim ~/myrepo/dotfiles-MacOS/
   
 }
+source /Users/enricofranco/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
