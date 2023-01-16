@@ -85,6 +85,7 @@ return require('packer').startup(function(use)
       require'alpha'.setup(require'alpha.themes.dashboard'.config)
     end
   }
+  -- Packer
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
