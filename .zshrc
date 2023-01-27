@@ -34,13 +34,17 @@ fi
 
 #alias
 alias ls="exa -1 --icons"
+alias lsg="exa -a1 --icons | grep $1"
 alias ll="exa -lh --icons"
+alias llg="exa -alh --icons | grep $1"
 alias lt="exa --tree --level=2 --icons"
 alias move-rename="/Users/enricofranco/Scripts/move_and_rename"
 alias reddit-scrape="/Users/enricofranco/Scripts/reddit-scrape"
 
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias ranger='ranger --choosedir=/tmp/$USER/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias rng='ranger'
+alias joshuto='joshuto --output-file /tmp/$USER/.joshuto ; DIR=`cat /tmp/$USER/.joshuto` ; cd "$DIR"'
+alias js='joshuto'
 
 # alias git
 alias lg='lazygit'
@@ -53,18 +57,4 @@ function brew() {
     sketchybar --trigger brew_update
   fi
 }
-
-# command to copy all dotfiles in the local repo
-function copy-dotfiles(){
-
-  cp ~/.zshrc ~/myrepo/dotfiles-MacOS/
-  cp -r ~/.config/alacritty  ~/myrepo/dotfiles-MacOS/
-  cp -r ~/.config/fastfetch ~/myrepo/dotfiles-MacOS/
-  cp -r ~/.config/kitty  ~/myrepo/dotfiles-MacOS/
-  cp -r ~/.config/neofetch  ~/myrepo/dotfiles-MacOS/
-  cp -r ~/.config/ranger  ~/myrepo/dotfiles-MacOS/
-  cp -r ~/.config/starship.toml  ~/myrepo/dotfiles-MacOS/
-  cp -r ~/.config/nvim ~/myrepo/dotfiles-MacOS/
-  
-}
-source /Users/enricofranco/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH="/usr/local/opt/qt@5/bin:$PATH"
