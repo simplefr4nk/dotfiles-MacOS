@@ -1,4 +1,4 @@
 \.git
-\.DS-Store
+\.DS_Store
 ^/.*\.md
 
