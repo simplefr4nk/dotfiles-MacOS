@@ -24,7 +24,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 #fastfetch --load-config ~/.config/fastfetch/myconfig.conf
 
 # do pokemon-icat similar to krabby but smaller
-alias pokemon-icat="/Users/enricofranco/Scripts/pokemon-icat/pokemon-icat.sh"
+alias pokemon-icat="$HOME/Scripts/pokemon-icat/pokemon-icat.sh"
 
 if [ $TERM = 'xterm-kitty' ]; then
   pokemon-icat # do pokemon-icat on kitty terminal
@@ -38,8 +38,8 @@ alias lsg="exa -a1 --icons | grep $1"
 alias ll="exa -lh --icons"
 alias llg="exa -alh --icons | grep $1"
 alias lt="exa --tree --level=2 --icons"
-alias move-rename="/Users/enricofranco/Scripts/move_and_rename"
-alias reddit-scrape="/Users/enricofranco/Scripts/reddit-scrape"
+alias move-rename="$HOME/Scripts/move_and_rename"
+alias reddit-scrape="$HOME/Scripts/reddit-scrape"
 
 alias ranger='ranger --choosedir=/tmp/$USER/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias rng='ranger'
