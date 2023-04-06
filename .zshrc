@@ -38,16 +38,26 @@ alias lsg="exa -a1 --icons | grep $1"
 alias ll="exa -lh --icons"
 alias llg="exa -alh --icons | grep $1"
 alias lt="exa --tree --level=2 --icons"
+
+#alias for my scripts
 alias move-rename="$HOME/Scripts/move_and_rename"
 alias reddit-scrape="$HOME/Scripts/reddit-scrape"
 
-alias ranger='ranger --choosedir=/tmp/$USER/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+#alias for ranger and joshuto
+alias ranger='ranger --choosedir=/tmp/.rsangerdir; LASTDIR=`cat /tmp/.rangerdir`; cd "$LASTDIR"'
 alias rng='ranger'
-alias joshuto='joshuto --output-file /tmp/$USER/.joshuto ; DIR=`cat /tmp/$USER/.joshuto` ; cd "$DIR"'
+alias joshuto='joshuto --output-file /tmp/.joshuto ; DIR=`cat /tmp/.joshuto` ; cd "$DIR"'
 alias js='joshuto'
 
 # alias git
 alias lg='lazygit'
+
+#alias
+alias start-service='brew services start mysql ; brew services start grafana ; brew services start mosquitto ; brew services start influxdb'
+alias stop-service='brew services stop mysql ; brew services stop grafana ; brew services stop mosquitto ; brew services start influxdb'
+
+# alias for sherlock
+alias sherlock="tmux new -A -s sherlock 'clear ; ssh sherlock'"
 
 # to update packages of sketchybar with brew()
 function brew() {
