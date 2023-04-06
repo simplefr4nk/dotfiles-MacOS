@@ -53,7 +53,7 @@ key_bindings:
   # Split the current pane into two, top and bottom.
   - { key: N, mods: Command|Shift, chars: "\x02\x22" }
   # Detach the current tmux client
-  - { key: Q, mods: Option, chars: "\x02\x64" }
+  - { key: D, mods: Command, chars: "\x02\x64" }
   # Change to the next tmux window
   - { key: Tab, mods: Control, chars: "\x02\x6e" }
   # Type <escape>:w<enter> to save neovim
