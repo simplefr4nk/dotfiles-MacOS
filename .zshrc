@@ -3,10 +3,15 @@
 # open the Starship Prompt
 eval "$(starship init zsh)"
 
-# add the autosuggestion, syntax highlighting and completions
+# add the autosuggestion, syntax highlighting, completions and history search
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
+source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# bind up and down arrow for substring search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # let me sign using GPG keys
 export GPG_TTY=$(tty)
@@ -32,7 +37,7 @@ else
   krabby random # do krabby random only if the terminal is alacritty
 fi
 
-#alias
+#alias for exa
 alias ls="exa -1 --icons"
 alias lsg="exa -a1 --icons | grep $1"
 alias ll="exa -lh --icons"
@@ -56,8 +61,9 @@ alias lg='lazygit'
 alias start-service='brew services start mysql ; brew services start grafana ; brew services start mosquitto ; brew services start influxdb'
 alias stop-service='brew services stop mysql ; brew services stop grafana ; brew services stop mosquitto ; brew services start influxdb'
 
-# alias for sherlock
+# alias for sherlock - lestrade
 alias sherlock="tmux new -A -s sherlock 'clear ; ssh sherlock'"
+alias lestrade="tmux new -A -s lestraed 'clear ; ssh lestrade'"
 
 # to update packages of sketchybar with brew()
 function brew() {
@@ -67,4 +73,9 @@ function brew() {
     sketchybar --trigger brew_update
   fi
 }
-export PATH="/usr/local/opt/qt@5/bin:$PATH"
+
+# Alias youtube downloader
+alias youtube="yt-dlp -f 'bv*+ba' -S ext:mp4:m4a $1"
+
+# export PATH for python (?)
+export PATH="/usr/local/sbin:$PATH"
