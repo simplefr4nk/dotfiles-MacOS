@@ -77,5 +77,8 @@ function brew() {
 # Alias youtube downloader
 alias youtube="yt-dlp -f 'bv*+ba' -S ext:mp4:m4a $1"
 
+# rsync command to backup Lestrade
+alias rsync-lestrade="rsync -avzhe 'ssh -p 34567' lestrade:headsec . --stats"
+
 # export PATH for python (?)
 export PATH="/usr/local/sbin:$PATH"
