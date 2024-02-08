@@ -12,7 +12,8 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
-  use { -- Packer nvim packet manager
+  use {
+    -- Packer nvim packet manager
     'wbthomason/packer.nvim'
   }
   -- My plugins here
@@ -33,7 +34,7 @@ return require('packer').startup(function(use)
   }
   use { -- fzf search 
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.0',
+    tag = '0.1.5',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use { -- LSP configuration
@@ -53,7 +54,7 @@ return require('packer').startup(function(use)
     'saadparwaiz1/cmp_luasnip',
   }
   use { -- snippets to save time while coding
-    'rafamadriz/friendly-snippets'
+   'rafamadriz/friendly-snippets'
   }
   use { -- automatic close parenthesis
 	  'windwp/nvim-autopairs',
