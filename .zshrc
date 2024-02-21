@@ -39,8 +39,10 @@ fi
 
 #alias for exa
 alias ls="exa -1 --icons"
+alias lsa="exa -a1 --icons"
 alias lsg="exa -a1 --icons | grep $1"
 alias ll="exa -lh --icons"
+alias lla="exa -alh --icons"
 alias llg="exa -alh --icons | grep $1"
 alias lt="exa --tree --level=2 --icons"
 
