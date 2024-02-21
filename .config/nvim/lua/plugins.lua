@@ -18,7 +18,8 @@ return require('packer').startup(function(use)
   }
   -- My plugins here
   use { -- theme
-    'navarasu/onedark.nvim'
+    -- 'navarasu/onedark.nvim'
+    "ellisonleao/gruvbox.nvim"
   }
   use { -- file explorer
     'nvim-tree/nvim-tree.lua'
