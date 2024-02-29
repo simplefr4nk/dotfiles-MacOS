@@ -83,10 +83,13 @@ alias youtube="yt-dlp -f 'bv*+ba' -S ext:mp4:m4a $1"
 alias rsync-lestrade="rsync -avzhe 'ssh -p 34567' lestrade:headsec . --stats"
 
 # bat aliases to use the light theme
-alias bat="bat --theme=gruvbox-light"
+alias bat="bat --theme=gruvbox-dark"
 
 # alias to jump on my repositories
 alias repo="cd $HOME/myrepo"
 
+# change GOPATH to remove it from the home folder
+export GOPATH=/Users/enricofranco/.local/go
+export PATH=$GOPATH/bin:$PATH
 # export PATH for python (?)
 export PATH="/usr/local/sbin:$PATH"
