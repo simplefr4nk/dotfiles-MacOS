@@ -9,6 +9,7 @@ vim.keymap.set('n', '\\', ':noh<return><esc>')
 local set = vim.opt
 
 set.number = true -- show number on left side
+set.rnu = true -- style the numbers relative to the line
 set.tabstop = 2 -- size of tab
 set.shiftwidth = 2
 set.expandtab = true -- expand tab on files
