@@ -251,7 +251,7 @@ vim.opt.showcmd = true -- show commands
 vim.opt.termguicolors = true -- True color support
 vim.opt.ignorecase = true -- Ignore case
 vim.opt.cursorline = true -- highlight the line with thr cursor in it
-vim.opt.clipboard = unnamedplus -- copy to clipboard
+vim.opt.clipboard="unnamedplus" -- copy to clipboard
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
