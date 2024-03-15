@@ -37,14 +37,14 @@ else
   krabby random # do krabby random only if the terminal is alacritty
 fi
 
-#alias for exa
-alias ls="exa -1 --icons"
-alias lsa="exa -a1 --icons"
-alias lsg="exa -a1 --icons | grep $1"
-alias ll="exa -lh --icons"
-alias lla="exa -alh --icons"
-alias llg="exa -alh --icons | grep $1"
-alias lt="exa --tree --level=2 --icons"
+#alias for eza
+alias ls="eza -1 --icons"
+alias lsa="eza -a1 --icons"
+alias lsg="eza -a1 --icons | grep $1"
+alias ll="eza -lh --icons"
+alias lla="eza -alh --icons"
+alias llg="eza -alh --icons | grep $1"
+alias lt="eza --tree --level=2 --icons"
 
 #alias for my scripts
 alias move-rename="$HOME/Scripts/move_and_rename"
@@ -86,10 +86,12 @@ alias rsync-lestrade="rsync -avzhe 'ssh -p 34567' lestrade:headsec . --stats"
 alias bat="bat --theme=gruvbox-dark"
 
 # alias to jump on my repositories
-alias repo="cd $HOME/myrepo"
+alias pro="cd $HOME/project"
 
 # change GOPATH to remove it from the home folder
 export GOPATH=/Users/enricofranco/.local/go
-export PATH=$GOPATH/bin:$PATH
+export GOBIN=$GOPATH/bin
+export PATH=$GOBIN:$PATH
+
 # export PATH for python (?)
 export PATH="/usr/local/sbin:$PATH"
