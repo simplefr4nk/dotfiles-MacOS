@@ -9,8 +9,8 @@ disabled = false
 symbol = " "
 
 [directory]
-truncation_length = 20 
-truncation_symbol = "…/"
+truncation_length = 0
+#truncation_symbol = "…/"
 read_only = " "
 
 # Preset
