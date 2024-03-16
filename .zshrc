@@ -59,13 +59,9 @@ alias js='joshuto'
 # alias git
 alias lg='lazygit'
 
-#alias
-alias start-service='brew services start mysql ; brew services start grafana ; brew services start mosquitto ; brew services start influxdb'
-alias stop-service='brew services stop mysql ; brew services stop grafana ; brew services stop mosquitto ; brew services start influxdb'
-
 # alias for sherlock - lestrade
-alias sherlock="tmux new -A -s sherlock 'clear ; ssh sherlock'"
-alias lestrade="tmux new -A -s lestraed 'clear ; ssh lestrade'"
+#alias sherlock="tmux new -A -s sherlock 'clear ; ssh sherlock'"
+#alias lestrade="tmux new -A -s lestraed 'clear ; ssh lestrade'"
 
 # to update packages of sketchybar with brew()
 function brew() {
