@@ -160,36 +160,23 @@ require("lazy").setup({
         "neovim/nvim-lspconfig",
         dependencies = {'williamboman/mason-lspconfig.nvim', 'williamboman/mason.nvim'},
         config = function()
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
             require'lspconfig'.lua_ls.setup({
-                settings = { -- remove vim variable warning on lua file
-                    Lua = {
-                        runtime = {
-                          -- Tell the language server which version of Lua you're using
-                          -- (most likely LuaJIT in the case of Neovim)
-                          version = 'LuaJIT',
-                        },
-                        diagnostics = {
-                          -- Get the language server to recognize the `vim` global
-                          globals = {
-                            'vim',
-                            'require'
-                          },
-                        },
-                        workspace = {
-                          -- Make the server aware of Neovim runtime files
-                          library = vim.api.nvim_get_runtime_file("", true),
-                        },
-                        -- Do not send telemetry data containing a randomized but unique identifier
-                        telemetry = {
-                          enable = false,
-                        },
-                    },
-                },
+                capabilities = capabilities
             })
-            require'lspconfig'.bashls.setup({})
-            require'lspconfig'.yamlls.setup({})
-            require'lspconfig'.marksman.setup({})
-            require'lspconfig'.gopls.setup({})
+            require'lspconfig'.bashls.setup({
+                capabilities = capabilities
+            })
+            require'lspconfig'.yamlls.setup({
+                capabilities = capabilities
+            })
+            require'lspconfig'.marksman.setup({
+                capabilities = capabilities
+            })
+            require'lspconfig'.gopls.setup({
+                capabilities = capabilities
+            })
         end,
 
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {}),
@@ -226,6 +213,47 @@ require("lazy").setup({
           {"<Leader>D", "<Cmd>MultipleCursorsJumpNextMatch<CR>"},
         },
     },
+    { -- completions inside the file
+        "hrsh7th/cmp-nvim-lsp"
+    },
+    { -- completions
+        "hrsh7th/nvim-cmp",
+        dependencies = {
+            "L3MON4D3/LuaSnip", -- snipped engine
+            "saadparwaiz1/cmp_luasnip", -- luasnip completions
+            "rafamadriz/friendly-snippets" -- colelction snippets used
+        },
+        config = function()
+            local cmp = require'cmp'
+            require("luasnip.loaders.from_vscode").lazy_load()
+
+            cmp.setup({
+                snippet = {
+                    expand = function(args)
+                      require('luasnip').lsp_expand(args.body)
+                    end,
+                },
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
+                mapping = cmp.mapping.preset.insert({
+                    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                    ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<C-e>'] = cmp.mapping.abort(),
+                    ['<CR>'] = cmp.mapping.confirm({ select = true })
+                }),
+                sources = cmp.config.sources({
+                    { name = 'luasnip' }, -- For luasnip users.
+                },
+                {
+                    { name = 'buffer' },
+                })
+            })
+        end
+    },
+
 })
 
 -- theme
