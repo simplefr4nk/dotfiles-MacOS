@@ -3,6 +3,9 @@
 # open the Starship Prompt
 eval "$(starship init zsh)"
 
+# open fzf syggestion
+eval "$(fzf --zsh)"
+
 # add the autosuggestion, syntax highlighting, completions and history search
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -90,4 +93,4 @@ export GOBIN=$GOPATH/bin
 export PATH=$GOBIN:$PATH
 
 # export PATH for python (?)
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/Users/enricofranco/.local/bin:/usr/local/sbin:$PATH"
