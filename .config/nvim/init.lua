@@ -23,13 +23,13 @@ require("lazy").setup({
     {  -- distraction free
         "junegunn/goyo.vim",
         keys = {
-          { "<C-g>", "<cmd>Goyo<cr>", desc = "Toggle Goyo" },
+          { "<Leader>g", "<cmd>Goyo<cr>", desc = "Goyo" },
         }
     },
     {  -- dimm not selected rows
         "junegunn/limelight.vim",
         keys = {
-          { "<C-l>", "<cmd>Limelight!!<cr>", desc = "Toggle Limelight" },
+          { "<Leader>l", "<cmd>Limelight!!<cr>", desc = "Limelight" },
         }
     },
     { -- markdown previewer
@@ -38,7 +38,7 @@ require("lazy").setup({
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
         keys = {
-            { "<C-p>", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle Markdown Preview"  }
+            { "<Leader>p", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview"  }
         }
     },
     { -- syntax highlight for markdown
@@ -55,16 +55,16 @@ require("lazy").setup({
           require("nvim-tree").setup {}
         end,
         keys = {
-          { "<C-n>", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle Nvim-Tree" },
+          { "<Leader>n", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle Nvim-Tree" },
         }
     },
     { -- Line above with name of buffers
         "akinsho/bufferline.nvim",
         event = "VeryLazy",
         keys = {
-          { "<C-S-Left>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-          { "<C-S-Right>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-          { "<C-w>", "<cmd>bd<cr>", desc = "Close buffer" },
+          { "<Leader><Left>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+          { "<Leader><Right>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+          { "<C-S-w>", "<cmd>bd<cr>", desc = "Close buffer" },
         },
         opts = {
           options = {
@@ -134,7 +134,6 @@ require("lazy").setup({
             "bash",
             "yaml",
             "go",
-            "regex",
             "lua",
           },
         }
@@ -152,72 +151,7 @@ require("lazy").setup({
             vim.o.timeoutlen = 300
         end,
         opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
         }
-    },
-    { -- Mason lsp downloader and installer
-        "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup()
-        end
-    },
-    { -- Mason bridge to lspconfig
-        "williamboman/mason-lspconfig.nvim",
-        dependencies = {'williamboman/mason.nvim'},
-        config = function()
-            require("mason-lspconfig").setup {
-                ensure_installed = {
-                    "lua_ls", -- lua 
-                    "bashls", -- bash
-                    "yamlls", -- yaml
-                    "marksman", -- markdown
-                    "gopls", -- go
-                },
-            }
-        end
-    },
-    { -- lsp
-        "neovim/nvim-lspconfig",
-        dependencies = {'williamboman/mason-lspconfig.nvim', 'williamboman/mason.nvim'},
-        config = function()
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-            require'lspconfig'.lua_ls.setup({
-                capabilities = capabilities
-            })
-            require'lspconfig'.bashls.setup({
-                capabilities = capabilities
-            })
-            require'lspconfig'.yamlls.setup({
-                capabilities = capabilities
-            })
-            require'lspconfig'.marksman.setup({
-                capabilities = capabilities
-            })
-            require'lspconfig'.gopls.setup({
-                capabilities = capabilities
-            })
-        end,
-
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {}),
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, {}),
-        vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
-    },
-    { -- GO 
-        "ray-x/go.nvim",
-        dependencies = { -- optional packages
-          "ray-x/guihua.lua",
-          "neovim/nvim-lspconfig",
-          "nvim-treesitter/nvim-treesitter",
-        },
-        config = function()
-          require("go").setup()
-        end,
-        event = { "CmdlineEnter" },
-        ft = { "go", "gomod" },
-        build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
     },
     { -- multiple cursor
         "brenton-leighton/multiple-cursors.nvim",
@@ -225,34 +159,100 @@ require("lazy").setup({
         opts = {},  -- This causes the plugin setup function to be called
         keys = {
           {"<C-Down>", "<Cmd>MultipleCursorsAddDown<CR>", mode = {"n", "i"}},
-          {"<C-j>", "<Cmd>MultipleCursorsAddDown<CR>"},
           {"<C-Up>", "<Cmd>MultipleCursorsAddUp<CR>", mode = {"n", "i"}},
-          {"<C-k>", "<Cmd>MultipleCursorsAddUp<CR>"},
           {"<C-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<CR>", mode = {"n", "i"}},
-          {"<Leader>a", "<Cmd>MultipleCursorsAddMatches<CR>", mode = {"n", "x"}},
-          {"<Leader>A", "<Cmd>MultipleCursorsAddMatchesV<CR>", mode = {"n", "x"}},
-          {"<Leader>d", "<Cmd>MultipleCursorsAddJumpNextMatch<CR>", mode = {"n", "x"}},
-          {"<Leader>D", "<Cmd>MultipleCursorsJumpNextMatch<CR>"},
-        },
+          {"<Leader>a", "<Cmd>MultipleCursorsAddMatches<CR>", mode = {"n", "x"}, desc = "Add multiple cursor that match"},
+          {"<Leader>d", "<Cmd>MultipleCursorsAddJumpNextMatch<CR>", mode = {"n", "x"}, desc = "Jump to and add the next cursor that match"},
+          {"<Leader>D", "<Cmd>MultipleCursorsJumpNextMatch<CR>"}, desc = "Jump to the next multiple cursor"},
     },
-    { -- completions inside the file
-        "hrsh7th/cmp-nvim-lsp"
+    { -- easier comments
+        'numToStr/Comment.nvim',
+            config = function()
+                require('Comment').setup()
+            end,
+            keys = {
+                { "n", "<Leader>cc", "<cmd>:normal gcc<cr>", desc = "Toggle Comment using line" },
+                { "n", "<Leader>cb", "<cmd>:normal gbc<cr>", desc = "Toggle Comment using block" },
+                { "v", "<Leader>cc", "<cmd>:normal gc<cr>", desc = "Toggle Comment using line" },
+                { "v", "<Leader>cb", "<cmd>:normal gb<cr>", desc = "Toggle Comment using block" },
+            },
+            lazy = false,
     },
-    { -- completions
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "L3MON4D3/LuaSnip", -- snipped engine
-            "saadparwaiz1/cmp_luasnip", -- luasnip completions
-            "rafamadriz/friendly-snippets" -- colelction snippets used
+    { -- Go development ide
+        "ray-x/go.nvim",
+        dependencies = {  -- optional packages
+          "ray-x/guihua.lua",
+          "neovim/nvim-lspconfig",
+          "nvim-treesitter/nvim-treesitter",
         },
         config = function()
-            local cmp = require'cmp'
+            require('go').setup({
+                gofmt_command = 'goimports'
+            })
+        end,
+        event = {"CmdlineEnter"},
+        ft = {"go", 'gomod'},
+        build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    },
+    -- LSP configuration
+    {
+        "williamboman/mason.nvim",
+        lazy = false,
+        config = function()
+          require("mason").setup()
+        end,
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        lazy = false,
+        opts = {
+          auto_install = true,
+        },
+    },
+    {
+        "neovim/nvim-lspconfig",
+        lazy = false,
+        config = function()
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+            local lspconfig = require("lspconfig")
+            lspconfig.gopls.setup({
+              capabilities = capabilities
+            })
+            lspconfig.html.setup({
+              capabilities = capabilities
+            })
+            lspconfig.lua_ls.setup({
+              capabilities = capabilities
+            })
+
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+            vim.keymap.set("n", "<leader>dd", vim.lsp.buf.definition, {})
+            vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, {})
+            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+        end,
+    },
+      -- Autocompletions
+    {
+        "hrsh7th/cmp-nvim-lsp"
+    },
+    {
+        "L3MON4D3/LuaSnip",
+        dependencies = {
+          "saadparwaiz1/cmp_luasnip",
+          "rafamadriz/friendly-snippets",
+        },
+    },
+    {
+        "hrsh7th/nvim-cmp",
+        config = function()
+            local cmp = require("cmp")
             require("luasnip.loaders.from_vscode").lazy_load()
 
             cmp.setup({
                 snippet = {
                     expand = function(args)
-                      require('luasnip').lsp_expand(args.body)
+                      require("luasnip").lsp_expand(args.body)
                     end,
                 },
                 window = {
@@ -260,22 +260,21 @@ require("lazy").setup({
                     documentation = cmp.config.window.bordered(),
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-                    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                    ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<C-e>'] = cmp.mapping.abort(),
-                    ['<CR>'] = cmp.mapping.confirm({ select = true })
+                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<C-e>"] = cmp.mapping.abort(),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
                 }),
                 sources = cmp.config.sources({
-                    { name = 'luasnip' }, -- For luasnip users.
-                },
-                {
-                    { name = 'buffer' },
-                })
+                    { name = "nvim_lsp" },
+                    { name = "luasnip" }, -- For luasnip users.
+                }, {
+                    { name = "buffer" },
+                }),
             })
-        end
+        end,
     },
-
 })
 
 -- theme
@@ -303,10 +302,37 @@ vim.opt.ignorecase = true -- Ignore case
 vim.opt.cursorline = true -- highlight the line with thr cursor in it
 vim.opt.clipboard="unnamedplus" -- copy to clipboard
 
+---------------
+-- functions --
+---------------
+
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-  -- group = augroup("highlight_yank"),
+    -- group = augroup("highlight_yank"),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
+
+-- Run gofmt + goimports on save
+
+local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
   callback = function()
-    vim.highlight.on_yank()
+   require("go.format").goimports()
   end,
+  group = format_sync_grp,
+})
+
+-- Remove lualine with Goyo
+
+local goyo_group = vim.api.nvim_create_augroup('GoyoGroup', {clear = true})
+vim.api.nvim_create_autocmd('User', {
+    desc = 'Hide lualine on GoYo enter',
+    group = goyo_group,
+    pattern = 'GoyoEnter',
+    callback = function()
+       require("lualine").hide()
+    end,
 })
