@@ -25,12 +25,6 @@ export LANG=it_IT.UTF-8
 # to use brew simpler without auto update
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-# do pfetch everytime a terminal windows is opened
-#pfetch
-
-# do fastfetch everytime a terminal windows is opened
-#fastfetch --load-config ~/.config/fastfetch/myconfig.conf
-
 # do pokemon-icat similar to krabby but smaller
 alias pokemon-icat="$HOME/Scripts/pokemon-icat/pokemon-icat.sh"
 
@@ -44,9 +38,11 @@ fi
 alias ls="eza -1 --icons"
 alias lsa="eza -a1 --icons"
 alias lsg="eza -a1 --icons | grep $1"
+
 alias ll="eza -lh --icons"
 alias lla="eza -alh --icons"
 alias llg="eza -alh --icons | grep $1"
+
 alias lt="eza --tree --level=2 --icons"
 
 #alias for my scripts
@@ -54,26 +50,25 @@ alias move-rename="$HOME/Scripts/move_and_rename"
 alias reddit-scrape="$HOME/Scripts/reddit-scrape"
 
 #alias for ranger and joshuto
-alias ranger='ranger --choosedir=/tmp/.rsangerdir; LASTDIR=`cat /tmp/.rangerdir`; cd "$LASTDIR"'
-alias rng='ranger'
 alias joshuto='joshuto --output-file /tmp/.joshuto ; DIR=`cat /tmp/.joshuto` ; cd "$DIR"'
 alias js='joshuto'
 
-# alias git
+# alias lazy~ programs 
 alias lg='lazygit'
+alias ld='lazydocker'
 
 # alias for sherlock - lestrade
 #alias sherlock="tmux new -A -s sherlock 'clear ; ssh sherlock'"
 #alias lestrade="tmux new -A -s lestraed 'clear ; ssh lestrade'"
 
 # to update packages of sketchybar with brew()
-function brew() {
-  command brew "$@" 
-
-  if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
-    sketchybar --trigger brew_update
-  fi
-}
+# function brew() {
+#   command brew "$@" 
+#
+#   if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
+#     sketchybar --trigger brew_update
+#   fi
+# }
 
 # Alias youtube downloader
 alias youtube="yt-dlp -f 'bv*+ba' -S ext:mp4:m4a $1"
@@ -81,8 +76,9 @@ alias youtube="yt-dlp -f 'bv*+ba' -S ext:mp4:m4a $1"
 # rsync command to backup Lestrade
 alias rsync-lestrade="rsync -avzhe 'ssh -p 34567' lestrade:headsec . --stats"
 
-# bat aliases to use the light theme
-alias bat="bat --theme=gruvbox-dark"
+# alias for text editors
+alias nv='nvim'
+alias nn='nano'
 
 # alias to jump on my repositories
 alias pro="cd $HOME/project"
@@ -92,5 +88,12 @@ export GOPATH=/Users/enricofranco/.local/go
 export GOBIN=$GOPATH/bin
 export PATH=$GOBIN:$PATH
 
+# emacs (doomemacs)
+export PATH="$PATH:/Users/enricofranco/.config/emacs/bin"
+
 # export PATH for python (?)
 export PATH="/Users/enricofranco/.local/bin:/usr/local/sbin:$PATH"
+# and emacs
+export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
+export PATH="/usr/local/opt/arm-none-eabi-gcc@8/bin:$PATH"
+export PATH="/usr/local/opt/arm-none-eabi-binutils/bin:$PATH"
