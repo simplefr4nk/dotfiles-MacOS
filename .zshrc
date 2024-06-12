@@ -58,7 +58,7 @@ alias lg='lazygit'
 alias ld='lazydocker'
 
 # alias for sherlock - lestrade
-#alias sherlock="tmux new -A -s sherlock 'clear ; ssh sherlock'"
+alias sherlock="ssh sherlock 'tmux -u new -A -s ssh'"
 #alias lestrade="tmux new -A -s lestraed 'clear ; ssh lestrade'"
 
 # to update packages of sketchybar with brew()
@@ -75,6 +75,17 @@ alias youtube="yt-dlp -f 'bv*+ba' -S ext:mp4:m4a $1"
 
 # rsync command to backup Lestrade
 alias rsync-lestrade="rsync -avzhe 'ssh -p 34567' lestrade:headsec . --stats"
+
+# rsync to sherlock sherlock
+function copyToSherlock() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: copyToSherlock $FROM sherlock:$TO"
+        return 1
+    fi
+    local FROM="$1"
+    local TO="$2"
+    rsync -avhze "ssh -p 53639" "$FROM" "sherlock:$TO" --stats
+}
 
 # alias for text editors
 alias nv='nvim'
