@@ -70,8 +70,7 @@ yabai -m rule --add app="^(Telegram Lite|IINA)$" border=off
 
 # apps to not manage (ignore)
 yabai -m rule --add app="^(System Settings|Archive Utility|Calculator|Digital Colour Meter|IINA|Bitdefender Virus Scanner|The Unarchiver)$" manage=off
-yabai -m rule --add app="^Stats$" manage=off
-yabai -m rule --add app="^Mullvad VPN$" manage=off
+yabai -m rule --add app="^(LuLu|LocalSend|Stats|Mullvad VPN)$" manage=off
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnecting)|Moving|Info|Pref|Deleting|Emptying)" manage=off
 yabai -m rule --add app="^mac_czkawka_gui_heif$" manage=off
 
