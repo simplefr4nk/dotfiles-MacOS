@@ -76,15 +76,26 @@ alias youtube="yt-dlp -f 'bv*+ba' -S ext:mp4:m4a $1"
 # rsync command to backup Lestrade
 alias rsync-lestrade="rsync -avzhe 'ssh -p 34567' lestrade:headsec . --stats"
 
-# rsync to sherlock sherlock
+# rsync to sherlock
 function copyToSherlock() {
     if [ "$#" -ne 2 ]; then
-        echo "Usage: copyToSherlock $FROM sherlock:$TO"
+        echo "Usage: copyToSherlock \$FROM sherlock:\$TO"
         return 1
     fi
     local FROM="$1"
     local TO="$2"
     rsync -avhze "ssh -p 53639" "$FROM" "sherlock:$TO" --stats
+}
+
+# rsync from sherlock
+function copyFromSherlock() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: copyFromSherlock sherlock:\$FROM \$TO"
+        return 1
+    fi
+    local FROM="$1"
+    local TO="$2"
+    rsync -avhze "ssh -p 53639" "sherlock:$FROM" "$TO" --stats
 }
 
 # alias for text editors
@@ -97,14 +108,8 @@ alias pro="cd $HOME/project"
 # change GOPATH to remove it from the home folder
 export GOPATH=/Users/enricofranco/.local/go
 export GOBIN=$GOPATH/bin
-export PATH=$GOBIN:$PATH
-
-# emacs (doomemacs)
-export PATH="$PATH:/Users/enricofranco/.config/emacs/bin"
+export PATH=$PATH:$GOBIN
 
 # export PATH for python (?)
-export PATH="/Users/enricofranco/.local/bin:/usr/local/sbin:$PATH"
-# and emacs
-export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
-export PATH="/usr/local/opt/arm-none-eabi-gcc@8/bin:$PATH"
-export PATH="/usr/local/opt/arm-none-eabi-binutils/bin:$PATH"
+export PATH="$PATH:/Users/enricofranco/.local/bin:/usr/local/sbin"
+export PATH="$PATH:/usr/local/Cellar/node@20/20.14.0/bin"
