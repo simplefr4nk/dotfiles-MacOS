@@ -20,7 +20,7 @@ yabai -m config window_gap                   6
 # ratio of split window
 yabai -m config split_ratio                  0.5
 # new window is open following mac os standard
-yabai -m config window_origin_display        false
+yabai -m config window_origin_display        true
 
 
 ## Mouse settings
@@ -40,7 +40,7 @@ yabai -m config mouse_follows_focus          off
 yabai -m config window_topmost               on
 # shadow on floating window
 #yabai -m config window_shadow                float
-
+yabai -m config window_animation_easing       ease_out_circ
 
 # Border 
 # activate border 
