@@ -1,7 +1,10 @@
 # ~/.zshrc
+NEWLINE=$'\n'
 
+PS1="%~$NEWLINE%B%(!.%F{red}#%f%b.%F{green}$%f%b) "
+#PS1='%B%F{green}[%n@%m%f%b %1~%B%F{green}]$%f%b ' #[enricofranco@macbook-enrico ~]$ 
 # open the Starship Prompt
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 
 # open fzf syggestion
 eval "$(fzf --zsh)"
@@ -53,6 +56,10 @@ alias reddit-scrape="$HOME/Scripts/reddit-scrape"
 alias joshuto='joshuto --output-file /tmp/.joshuto ; DIR=`cat /tmp/.joshuto` ; cd "$DIR"'
 alias js='joshuto'
 
+# theme choices
+alias moar="moar --style=gruvbox"
+alias bat="bat --theme gruvbox-dark"
+
 # alias lazy~ programs 
 alias lg='lazygit'
 alias ld='lazydocker'
@@ -84,7 +91,7 @@ function copyToSherlock() {
     fi
     local FROM="$1"
     local TO="$2"
-    rsync -avhze "ssh -p 53639" "$FROM" "sherlock:$TO" --stats
+    rsync -avhze "ssh -p 53639" "$FROM" "sherlock:$TO" --stats --progress
 }
 
 # rsync from sherlock
@@ -95,7 +102,7 @@ function copyFromSherlock() {
     fi
     local FROM="$1"
     local TO="$2"
-    rsync -avhze "ssh -p 53639" "sherlock:$FROM" "$TO" --stats
+    rsync -avhze "ssh -p 53639" "sherlock:$FROM" "$TO" --stats --progress
 }
 
 # alias for text editors
@@ -109,6 +116,8 @@ alias pro="cd $HOME/project"
 export GOPATH=/Users/enricofranco/.local/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+
+alias fastfetch="fastfetch --load-config paleofetch.jsonc"
 
 # export PATH for python (?)
 export PATH="$PATH:/Users/enricofranco/.local/bin:/usr/local/sbin"

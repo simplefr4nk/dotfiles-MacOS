@@ -19,6 +19,7 @@ yabai -m config right_padding                6
 yabai -m config window_gap                   6
 # ratio of split window
 yabai -m config split_ratio                  0.5
+yabai -m config split_type                   auto
 # new window is open following mac os standard
 yabai -m config window_origin_display        true
 
@@ -42,36 +43,11 @@ yabai -m config window_topmost               on
 #yabai -m config window_shadow                float
 yabai -m config window_animation_easing       ease_out_circ
 
-# Border 
-# activate border 
-yabai -m config window_border                on
-# remove blur behind windows
-yabai -m config window_border_blur off
-# size of the border
-yabai -m config window_border_width          3
-# color of the boarder (green)
-yabai -m config active_window_border_color   0xFF63CA56
-# color of the border of window without it (none)
-yabai -m config normal_window_border_color   0x63CA56
-yabai -m config insert_feedback_color        0x63CA56
-
-# Sketchybar
-#yabai -m config top_padding                  20
-#yabai -m config external_bar                 all:39:0  
-#yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
-#yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
-#yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
-
-
-#yabai -m config auto_balance                 off
-
 # remove background blur on some apps
-yabai -m rule --add app="^(Telegram Lite|IINA)$" border=off
+# yabai -m rule --add app="^(Telegram Lite|IINA)$" border=off
 
 # apps to not manage (ignore)
-yabai -m rule --add app="^(System Settings|Archive Utility|Calculator|Digital Colour Meter|IINA|Bitdefender Virus Scanner|The Unarchiver)$" manage=off
-yabai -m rule --add app="^(LuLu|LocalSend|Stats|Mullvad VPN)$" manage=off
+yabai -m rule --add app="^(System Settings|Archive Utility|Calculator|Digital Colour Meter|IINA|Bitdefender Virus Scanner|The Unarchiver|AppCleaner|Microsoft AutoUpdate|LuLu|LocalSend|Stats|Krokiet|Mullvad VPN)$" manage=off
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnecting)|Moving|Info|Pref|Deleting|Emptying)" manage=off
-yabai -m rule --add app="^mac_czkawka_gui_heif$" manage=off
 
 echo "yabai configuration loaded.."
