@@ -18,7 +18,13 @@ vim.g.autoformat = true
 
 require("lazy").setup({
     { -- gruvbox theme
-        "ellisonleao/gruvbox.nvim", priority = 1000
+        "ellisonleao/gruvbox.nvim", priority = 1000,
+        config = true,
+        opts = function()
+          require('gruvbox').setup {
+            contrast = "dark",
+          }
+        end
     },
     {  -- distraction free
         "junegunn/goyo.vim",
